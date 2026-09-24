@@ -64,35 +64,7 @@ El examen evalúa comprensión conceptual, lectura crítica de resultados, selec
 
 El taller corresponde a una evaluación grupal del curso y se entrega por Interactiva.
 
-Consiste en desarrollar un flujo completo de **Machine Learning para predicción binaria desbalanceada**, usando una base de datos en SQLite para estimar la ocurrencia de accidentes por barrio y hora.
-
-**Entregables:**
-
-- informe en PDF;
-- notebook `.ipynb` ejecutable;
-- resultados reproducibles;
-- recomendación técnica final.
-
-**Descarga:** [Enunciado del taller](https://github.com/anvasquezre/EAFIT_AA_2026-02/blob/main/homeworks/aprendizaje_automatico_taller_20261.pdf)
-
-El taller evalúa especialmente:
-
-- formulación del problema;
-- construcción del target;
-- generación de casos negativos;
-- análisis exploratorio y calidad de datos;
-- unión de tablas relacionales;
-- ingeniería de características;
-- manejo de clases desbalanceadas;
-- validación temporal;
-- control de fuga de información;
-- comparación de modelos;
-- ajuste de hiperparámetros;
-- selección de métricas;
-- thresholding;
-- matriz de confusión;
-- propuesta de uso operativo;
-- recomendación final defendible.
+> Enunciado, dataset y fecha de entrega: **por definir**. Se publicarán en esta sección.
 
 ---
 
@@ -211,7 +183,7 @@ EAFIT_AA_2026-02/
 │   ├── 01b_ml_ensembles_balanceo.pdf
 │   └── latex/        # fuentes LaTeX
 ├── notebooks/        # NB01, NB02
-├── homeworks/        # taller y exposiciones
+├── homeworks/        # exposiciones (taller por definir)
 ├── aditionalmaterial/
 └── _assets/
 ```

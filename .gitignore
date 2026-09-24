@@ -4,3 +4,6 @@
 
 # LaTeX sources: keep PDFs only in lectures/ root
 lectures/latex/**/*.pdf
+
+# Taller not published yet
+/homeworks/aprendizaje_automatico_taller_20261.pdf
