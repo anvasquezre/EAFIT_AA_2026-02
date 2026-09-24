@@ -1,0 +1,39 @@
+[project]
+name = "si7009-ml"
+version = "0.1.0"
+description = "SI7009 Aprendizaje Automático - EAFIT course notebooks"
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    # Core scientific stack (all notebooks)
+    "numpy",
+    "pandas",
+    "scipy",
+    "matplotlib",
+    "scikit-learn>=1.5",  # TunedThresholdClassifierCV (01_ml_flujo_basico_fraude.ipynb)
+    "packaging",
+    # 01_ml_flujo_basico_fraude.ipynb: persisted inference pipeline
+    "joblib",
+    # ml_boosting_optuna.ipynb
+    "xgboost",
+    "lightgbm",
+    "catboost",
+    "optuna",
+    "imbalanced-learn",
+    "kagglehub[pandas-datasets]>=1.0.2",
+    "torch>=2.14.0",
+    # ml_time_series_walkforward.ipynb
+    "statsmodels",
+    # ml_unsupervisedlearning.ipynb
+    "openpyxl",
+    "umap-learn",
+]
+
+[dependency-groups]
+dev = [
+    "jupyterlab",
+    "ipykernel",
+]
+
+[tool.uv]
+package = false
