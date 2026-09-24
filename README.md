@@ -1,4 +1,4 @@
-[![banner](/_assets/pics/bannerAI.jpg)](https://github.com/marcoteran/ml)
+[![banner](/_assets/pics/bannerAI.jpg)](https://github.com/anvasquezre/EAFIT_AA_2026-02)
 
 # SI7009 · Aprendizaje Automático
 
@@ -13,9 +13,9 @@
 
 Repositorio oficial del curso **Aprendizaje Automático**.
 
-Este curso desarrolla criterio técnico para formular, validar, comparar e interpretar modelos de **Machine Learning** en escenarios reales: datos desbalanceados, validación temporal, selección de métricas, boosting moderno, recomendación, clustering, interpretabilidad y confiabilidad del modelo.
+Este curso desarrolla criterio técnico para formular, validar, comparar e interpretar modelos de **Machine Learning** en escenarios reales: datos desbalanceados, validación cruzada, selección de métricas y thresholds, boosting moderno y optimización de hiperparámetros.
 
-**Profesor:** [Marco Teran](https://marcoteran.github.io/)
+**Profesor:** [Andrés Vásquez Restrepo](mailto:avasquezr3@eafit.edu.co)
 
 ---
 
@@ -35,10 +35,8 @@ Este curso desarrolla criterio técnico para formular, validar, comparar e inter
 
 | Sesión | Tema central | Problema guía | Materiales | Recursos asociados |
 |---|---|---|---|---|
-| 1 | Syllabus, evaluación moderna, desbalance y fundamentos de ensembles | Evaluación honesta de modelos | [Slides PDF](https://github.com/marcoteran/ml/raw/master/lectures/01_ml_modern_evaluation_imbalance_ensembles.pdf)<br>[Notebook NB01](https://github.com/marcoteran/ml/blob/master/notebooks/01_ml_flujo_basico_fraude.ipynb)<br>[![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/marcoteran/ml/blob/master/notebooks/01_ml_flujo_basico_fraude.ipynb)<br>[![Abrir en Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/marcoteran/ml/blob/master/notebooks/01_ml_flujo_basico_fraude.ipynb) | [Scikit-learn · Model selection](https://scikit-learn.org/stable/model_selection.html)<br>[Scikit-learn · Metrics and scoring](https://scikit-learn.org/stable/modules/model_evaluation.html)<br>[Scikit-learn · Threshold tuning](https://scikit-learn.org/stable/modules/classification_threshold.html) |
-| 2 | Boosting moderno, optimización de hiperparámetros, interpretabilidad y diagnóstico de modelos | Credit Card Fraud Detection | [Slides PDF](https://drive.google.com/file/d/1tmNx19iKF9JwbQAYxu0yuWfawEAIzcUz/view?usp=drive_link)<br>[Notebook NB02](https://github.com/marcoteran/ml/blob/master/notebooks/ml_boosting_optuna.ipynb)<br>[![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/marcoteran/ml/blob/master/notebooks/ml_boosting_optuna.ipynb)<br>[![Abrir en Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/marcoteran/ml/blob/master/notebooks/ml_boosting_optuna.ipynb) | [XGBoost](https://xgboost.readthedocs.io/)<br>[XGBoost · Parameters](https://xgboost.readthedocs.io/en/stable/parameter.html)<br>[LightGBM](https://lightgbm.readthedocs.io/en/stable/)<br>[CatBoost](https://catboost.ai/)<br>[Optuna](https://optuna.org/)<br>[SHAP](https://shap.readthedocs.io/en/latest/)<br>[SHAP · Introduction to Shapley values](https://shap.readthedocs.io/en/latest/example_notebooks/overviews/An%20introduction%20to%20explainable%20AI%20with%20Shapley%20values.html)<br>[MLflow](https://mlflow.org/)<br>[Residual plots](https://statisticsbyjim.com/regression/check-residual-plots-regression-analysis/)<br>[Applied ML article for critical metric discussion](https://www.mdpi.com/2075-4418/14/24/2813) |
-| 3 | Series de tiempo, forecasting tabular y walk-forward validation | Predicción temporal con datos tabulares | [Slides PDF](https://github.com/marcoteran/ml/raw/master/lectures/03_ml_temporal_prediction.pdf)<br>[Notebook NB02](https://github.com/marcoteran/ml/blob/master/notebooks/ml_time_series_walkforward.ipynb)<br>[![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/marcoteran/ml/blob/master/notebooks/ml_time_series_walkforward.ipynb)<br>[![Abrir en Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/marcoteran/ml/blob/master/notebooks/ml_time_series_walkforward.ipynb) | [Scikit-learn · Time-related feature engineering](https://scikit-learn.org/stable/auto_examples/applications/plot_cyclical_feature_engineering.html)<br>[Forecasting: Principles and Practice](https://otexts.com/fpp3/)<br>[Skforecast](https://skforecast.org/)<br>[Respect the order: cross-validation in time series](https://medium.com/@pacosun/respect-the-order-cross-validation-in-time-series-7d12beab79a1) |
-| 4 | Representación, clustering aplicado y confiabilidad del modelo | Online Retail | [Slides PDF](https://github.com/marcoteran/ml/raw/master/lectures/04_ml_unsupervisedlearning.pdf)<br>[Notebook NB02](https://github.com/marcoteran/ml/blob/master/notebooks/ml_unsupervisedlearning.ipynb)<br>[![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/marcoteran/ml/blob/master/notebooks/ml_unsupervisedlearning.ipynb)<br>[![Abrir en Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/marcoteran/ml/blob/master/notebooks/ml_unsupervisedlearning.ipynb) | [Scikit-learn · Clustering](https://scikit-learn.org/stable/modules/clustering.html)<br>[Scikit-learn · Novelty and outlier detection](https://scikit-learn.org/stable/modules/outlier_detection.html)<br>[Scikit-learn · Probability calibration](https://scikit-learn.org/stable/modules/calibration.html)<br>[UCI · Online Retail](https://archive.ics.uci.edu/dataset/352/online%2Bretail) |
+| 1 | Syllabus, evaluación moderna, validación e hiperparámetros | Evaluación honesta de modelos | [Slides PDF 01a](https://github.com/anvasquezre/EAFIT_AA_2026-02/raw/main/lectures/01a_ml_evaluacion_validacion_arboles.pdf)<br>[Notebook NB01](https://github.com/anvasquezre/EAFIT_AA_2026-02/blob/main/notebooks/01_ml_flujo_basico_fraude.ipynb)<br>[![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/anvasquezre/EAFIT_AA_2026-02/blob/main/notebooks/01_ml_flujo_basico_fraude.ipynb)<br>[![Abrir en Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/anvasquezre/EAFIT_AA_2026-02/blob/main/notebooks/01_ml_flujo_basico_fraude.ipynb) | [Scikit-learn · Model selection](https://scikit-learn.org/stable/model_selection.html)<br>[Scikit-learn · Metrics and scoring](https://scikit-learn.org/stable/modules/model_evaluation.html)<br>[Scikit-learn · Threshold tuning](https://scikit-learn.org/stable/modules/classification_threshold.html)<br>[Scikit-learn · Probability calibration](https://scikit-learn.org/stable/modules/calibration.html) |
+| 2 | Árboles, ensembles, boosting moderno, balanceo y optimización bayesiana | Credit Card Transactions Fraud Detection | [Slides PDF 01b](https://github.com/anvasquezre/EAFIT_AA_2026-02/raw/main/lectures/01b_ml_ensembles_balanceo.pdf)<br>[Notebook NB02](https://github.com/anvasquezre/EAFIT_AA_2026-02/blob/main/notebooks/02_ml_boosting_fraude.ipynb)<br>[![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/anvasquezre/EAFIT_AA_2026-02/blob/main/notebooks/02_ml_boosting_fraude.ipynb)<br>[![Abrir en Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/anvasquezre/EAFIT_AA_2026-02/blob/main/notebooks/02_ml_boosting_fraude.ipynb) | [XGBoost](https://xgboost.readthedocs.io/)<br>[XGBoost · Parameters](https://xgboost.readthedocs.io/en/stable/parameter.html)<br>[LightGBM](https://lightgbm.readthedocs.io/en/stable/)<br>[CatBoost](https://catboost.ai/)<br>[imbalanced-learn](https://imbalanced-learn.org/stable/)<br>[Optuna](https://optuna.org/) |
 
 ---
 
@@ -75,7 +73,7 @@ Consiste en desarrollar un flujo completo de **Machine Learning para predicción
 - resultados reproducibles;
 - recomendación técnica final.
 
-**Descarga:** [Enunciado del taller](https://github.com/marcoteran/ml/raw/master/homeworks/aprendizaje_automatico_taller_20261.pdf)
+**Descarga:** [Enunciado del taller](https://github.com/anvasquezre/EAFIT_AA_2026-02/raw/main/homeworks/aprendizaje_automatico_taller_20261.pdf)
 
 El taller evalúa especialmente:
 
@@ -100,9 +98,18 @@ El taller evalúa especialmente:
 
 ## Exposiciones
 
-Cada grupo podrá escoger un tema avanzado de Machine Learning por orden de selección.
+Cada grupo (individual o en pareja; tríos solo si la matrícula lo exige) escoge un tema avanzado de Machine Learning del banco oficial, por orden de escogencia en la [hoja de inscripción](https://eafit-my.sharepoint.com/:x:/g/personal/avasquezr3_eafit_edu_co/IQBMNr9rRCRzSIhl0wmT5yroAXJ4WnD7ZvdjMnQujZHcw5Y?e=CsqvSX). Un tema no se repite hasta agotar el banco.
 
-La presentación debe ser breve, clara y técnica. No se espera una revisión enciclopédica, sino una explicación bien estructurada del problema, la intuición del método, un ejemplo computacional y sus riesgos de uso.
+La presentación dura **20 minutos + 5 minutos de preguntas**. No se espera una revisión enciclopédica, sino una explicación bien estructurada del problema, la intuición del método, un ejemplo computacional y sus riesgos de uso.
+
+**Descarga:** [Enunciado y rúbrica de la exposición](https://github.com/anvasquezre/EAFIT_AA_2026-02/raw/main/homeworks/ml_exposiciones_20262.pdf)
+
+### Calendario
+
+- **Cierre de escogencia de temas:** final de la Sesión 2.
+- Las exposiciones inician en la **Sesión 3**.
+- La **fecha y el orden** de cada grupo se asignan por **sorteo**, una vez todos los grupos hayan escogido tema.
+- El número de exposiciones por sesión se define según la cantidad de grupos.
 
 ### Entregables
 
@@ -112,22 +119,12 @@ La presentación debe ser breve, clara y técnica. No se espera una revisión en
 
 ### Banco de temas
 
-- Reinforcement Learning
-- Federated Learning
-- Semi-Supervised Learning
-- MLOps / Deployment
-- Explainable AI
-- Conformal Prediction
-- Uncertainty Quantification
-- Active Learning
-- Learning to Rank
-- Graph Machine Learning
-- Tabular Deep Learning
-- Anomaly Detection at Scale
-- Continual Learning
-- AutoML
-- Time-Series Transformers
-- TinyML / Edge ML
+| Línea | Temas disponibles |
+|---|---|
+| Base | Sistemas de recomendación avanzados; aprendizaje por refuerzo; aprendizaje semi-supervisado; aprendizaje federado; MLOps / deployment; restricciones en modelos; Explainable AI |
+| Expansión | Graph Neural Networks; Learning to Rank; uplift modeling y causal ML; active learning; continual learning; time-series transformers; tabular deep learning; AutoML y meta-learning |
+| Avanzados | Synthetic data; privacy-preserving ML; fairness; anomaly detection at scale; survival analysis; multi-objective optimization; weak supervision; foundation models tabulares o temporales |
+| Sistemas | Retrieval-augmented ML systems; ML para grafos dinámicos; bandits contextualizados; conformal prediction; uncertainty quantification; TinyML / energy efficient ML |
 
 ---
 
@@ -135,11 +132,7 @@ La presentación debe ser breve, clara y técnica. No se espera una revisión en
 
 | Dataset | Descripción | Uso dentro del curso |
 |---|---|---|
-| [Credit Card Fraud Detection](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud) | Transacciones anonimizadas con una clase positiva muy poco frecuente. | Clasificación desbalanceada, métricas, thresholds, boosting, HPO e interpretabilidad. |
-| [Credit Card Transactions Fraud Detection](https://www.kaggle.com/datasets/kartik2112/fraud-detection) | Transacciones simuladas con variables crudas (monto, categoría, hora, ubicación, edad) y un periodo posterior para inferencia. | Flujo de ML, EDA, outliers, pipelines de inferencia, métricas, threshold y calibración (NB01). |
-| [Metro Interstate Traffic Volume](https://archive.ics.uci.edu/dataset/492/metro+interstate+traffic+volume) | Datos horarios de tráfico con variables de clima, calendario y volumen vehicular. | Forecasting tabular, ingeniería de variables temporales y validación walk-forward. |
-| [MovieLens](https://grouplens.org/datasets/movielens/) | Calificaciones de usuarios a películas, ampliamente usado en recommendation systems. | Collaborative filtering, matrices usuario-item, ranking top-N y evaluación de recomendadores. |
-| [Online Retail](https://archive.ics.uci.edu/dataset/352/online%2Bretail) | Transacciones reales de comercio electrónico con clientes, productos, cantidades y fechas. | Segmentación, clustering, representación de clientes y análisis de comportamiento transaccional. |
+| [Credit Card Transactions Fraud Detection](https://www.kaggle.com/datasets/kartik2112/fraud-detection) | Transacciones simuladas con variables crudas (monto, categoría, hora, ubicación, edad) y un periodo posterior para inferencia. | Flujo de ML, EDA, outliers, pipelines de inferencia, métricas, threshold y calibración (NB01); boosting, balanceo y Optuna (NB02). |
 
 ---
 
@@ -185,46 +178,6 @@ Estos recursos complementan la ruta del curso. La prioridad sugerida es comenzar
 </details>
 
 <details>
-<summary><strong>Interpretabilidad, SHAP y diagnóstico de modelos</strong></summary>
-
-- [SHAP documentation](https://shap.readthedocs.io/en/latest/)
-- [SHAP · Introduction to explainable AI with Shapley values](https://shap.readthedocs.io/en/latest/example_notebooks/overviews/An%20introduction%20to%20explainable%20AI%20with%20Shapley%20values.html)
-- [DataCamp · Introduction to SHAP values](https://www.datacamp.com/tutorial/introduction-to-shap-values-machine-learning-interpretability)
-- [Statistics by Jim · Residual plots for regression analysis](https://statisticsbyjim.com/regression/check-residual-plots-regression-analysis/)
-
-</details>
-
-<details>
-<summary><strong>Series de tiempo y forecasting</strong></summary>
-
-- [Scikit-learn · Time-related feature engineering](https://scikit-learn.org/stable/auto_examples/applications/plot_cyclical_feature_engineering.html)
-- [Forecasting: Principles and Practice](https://otexts.com/fpp3/)
-- [Skforecast documentation](https://skforecast.org/)
-- [Respect the order: cross-validation in time series](https://medium.com/@pacosun/respect-the-order-cross-validation-in-time-series-7d12beab79a1)
-
-</details>
-
-<details>
-<summary><strong>Recommendation systems</strong></summary>
-
-- [GroupLens · MovieLens datasets](https://grouplens.org/datasets/movielens/)
-- [Implicit library documentation](https://benfred.github.io/implicit/)
-- [Dive into Deep Learning · MovieLens example](https://d2l.ai/chapter_recommender-systems/movielens.html)
-- [A practical guide to building recommender systems](https://towardsdatascience.com/a-guide-to-recommender-systems-6c0f0f1a7e47)
-
-</details>
-
-<details>
-<summary><strong>Clustering, representación y confiabilidad</strong></summary>
-
-- [Scikit-learn · Clustering](https://scikit-learn.org/stable/modules/clustering.html)
-- [Scikit-learn · Novelty and outlier detection](https://scikit-learn.org/stable/modules/outlier_detection.html)
-- [Scikit-learn · Probability calibration](https://scikit-learn.org/stable/modules/calibration.html)
-- [UCI Machine Learning Repository · Online Retail](https://archive.ics.uci.edu/dataset/352/online%2Bretail)
-
-</details>
-
-<details>
 <summary><strong>Videos y charlas</strong></summary>
 
 - [TED · Jeremy Howard — The wonderful and terrifying implications of computers that can learn](https://www.ted.com/talks/jeremy_howard_the_wonderful_and_terrifying_implications_of_computers_that_can_learn)
@@ -233,7 +186,6 @@ Estos recursos complementan la ruta del curso. La prioridad sugerida es comenzar
 - [StatQuest · XGBoost in Python from Start to Finish](https://www.youtube.com/watch?v=GrJP9FLV3FE)
 - [StatQuest · XGBoost Part 1](https://www.youtube.com/watch?v=OtD8wVaFm6E)
 - [StatQuest · XGBoost Part 2](https://www.youtube.com/watch?v=8b1JEDvenQU)
-- [Stanford recommender systems lecture](https://www.youtube.com/watch?v=GIcuSNAAa4g)
 
 </details>
 
@@ -244,7 +196,6 @@ Estos recursos complementan la ruta del curso. La prioridad sugerida es comenzar
 - Murphy · *Machine Learning: A Probabilistic Perspective*
 - Hastie, Tibshirani, Friedman · *The Elements of Statistical Learning*
 - Géron · *Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow*
-- Aggarwal · *Recommender Systems: The Textbook*
 
 </details>
 
@@ -253,15 +204,17 @@ Estos recursos complementan la ruta del curso. La prioridad sugerida es comenzar
 ## Estructura del repositorio
 
 ```text
-ml/
+EAFIT_AA_2026-02/
 ├── README.md
 ├── lectures/
-├── notebooks/
-├── homeworks/
-├── projects/
+│   ├── 01a_ml_evaluacion_validacion_arboles.pdf
+│   ├── 01b_ml_ensembles_balanceo.pdf
+│   └── latex/        # fuentes LaTeX
+├── notebooks/        # NB01, NB02
+├── homeworks/        # taller y exposiciones
 ├── aditionalmaterial/
 └── _assets/
-````
+```
 
 > Nota: si la carpeta `aditionalmaterial/` ya existe con ese nombre en el repositorio, conviene mantenerla para no romper rutas. Si aún no está consolidada, se recomienda renombrarla como `additionalmaterial/`.
 
