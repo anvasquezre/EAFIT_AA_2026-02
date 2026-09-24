@@ -1,0 +1,139 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-noquoting,es-nodecimaldot]{babel}
+\usepackage{newtxtext}
+\usepackage[margin=1.1in,top=1.45in,headheight=60pt,headsep=14pt]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{graphicx,array,tabularx,enumitem,fancyhdr,titlesec,qrcode}
+\usepackage[most]{tcolorbox}
+\usepackage[colorlinks=true,urlcolor=eafitlink]{hyperref}
+
+% ---------------------------------------------------------------- palette (taller 2026-1)
+\definecolor{eafitnavy}{HTML}{0F1B5E}
+\definecolor{eafitaccent}{HTML}{1FA8DC}
+\definecolor{eafitlink}{HTML}{0563C1}
+\definecolor{boxfill}{HTML}{EAF6FB}
+\definecolor{rowalt}{HTML}{F2F2F2}
+\definecolor{gridgray}{HTML}{BFBFBF}
+\definecolor{bodytext}{HTML}{222222}
+\definecolor{softgray}{HTML}{555555}
+
+\newcommand{\signup}{https://eafit-my.sharepoint.com/:x:/g/personal/avasquezr3_eafit_edu_co/IQBMNr9rRCRzSIhl0wmT5yroAXJ4WnD7ZvdjMnQujZHcw5Y?e=CsqvSX}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\color{bodytext}
+\setlist{nosep,leftmargin=1.5em,topsep=2pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+% ---------------------------------------------------------------- header
+\pagestyle{fancy}\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[C]{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=north west,inner sep=0pt] at ([xshift=9pt,yshift=-10pt]current page.north west)
+      {\includegraphics[width=87pt]{figures/eafit_logo.png}};
+  \end{tikzpicture}%
+  {\color{black}\bfseries\itshape Aprendizaje Automático\\ Exposición, Semestre 2026-2\\ Profesor: Andrés Vásquez Restrepo}\\[-2pt]
+  {\color{black}\rule{\textwidth}{0.6pt}}}
+\fancyfoot[C]{\small\color{softgray}\thepage}
+
+% ---------------------------------------------------------------- sections
+\titleformat{\section}{\color{eafitnavy}\fontsize{18}{22}\selectfont\bfseries}{\thesection.}{0.4em}{}[{\color{eafitaccent}\titlerule[2pt]}]
+\titlespacing*{\section}{0pt}{16pt}{8pt}
+\titleformat{\subsection}{\color{eafitnavy}\large\bfseries}{\thesubsection}{0.4em}{}
+\titlespacing*{\subsection}{0pt}{10pt}{2pt}
+
+% ---------------------------------------------------------------- tables
+\arrayrulecolor{gridgray}
+\newcommand{\thead}[1]{\color{white}\bfseries\small #1}
+\newcommand{\headrow}{\rowcolor{eafitnavy}}
+
+\begin{document}
+
+% ---------------------------------------------------------------- title block
+{\itshape\color{softgray}Aprendizaje Automático · MCDA 2026-2}\par\vspace{-4pt}
+{\color{eafitnavy}\fontsize{22}{27}\selectfont\bfseries Exposición — Temas avanzados de ML}\par\vspace{-2pt}
+{\color{eafitaccent}\rule{\textwidth}{2pt}}\par\vspace{-2pt}
+{\itshape\color{softgray}Comunicación técnica · Ejemplo computacional en Python · Reproducibilidad}\par
+
+\begin{tcolorbox}[enhanced,sharp corners,colback=boxfill,colframe=gridgray,boxrule=0.5pt,
+  borderline north={2pt}{0pt}{eafitaccent},left=10pt,right=10pt,top=8pt,bottom=8pt,before skip=8pt,after skip=4pt]
+  \setlength{\parskip}{5pt}
+  {\color{eafitnavy}\bfseries Tema:} uno del banco oficial (sección 5), por orden de escogencia\par
+  {\color{eafitnavy}\bfseries Modalidad:} individual o en pareja (tríos solo si la matrícula lo exige)\par
+  {\color{eafitnavy}\bfseries Peso:} 20\,\% de la nota del curso\par
+  {\color{eafitnavy}\bfseries Duración:} 20 minutos de exposición + 5 minutos de preguntas\par
+  {\color{eafitnavy}\bfseries Inscripción de temas:} \href{\signup}{Hoja compartida} — cierre al final de la Sesión 2\par
+  {\color{eafitnavy}\bfseries Fecha de presentación:} asignada por sorteo, desde la Sesión 3\par
+  {\color{eafitnavy}\bfseries Entregables:} presentación en PDF + repositorio público en GitHub con el ejemplo en Python
+\end{tcolorbox}
+
+\section{Descripción}
+La exposición es un componente formal del curso. No reemplaza la clase: amplía el horizonte con temas modernos de aprendizaje automático que no se cubren de forma central en las sesiones.
+
+Cada grupo realiza una exposición sobre un tema del banco oficial. No se espera una revisión enciclopédica, sino una explicación bien estructurada del problema, la intuición del método, un ejemplo computacional y sus riesgos de uso.
+
+\section{Política operativa y calendario}
+\begin{itemize}
+  \item La asignación de temas es por orden de escogencia en la \href{\signup}{hoja compartida}.
+  \item Un tema no se repite hasta agotar el banco.
+  \item La escogencia de temas cierra al \textbf{final de la Sesión 2}.
+  \item Las exposiciones inician en la \textbf{Sesión 3}.
+  \item La \textbf{fecha y el orden} de cada grupo se asignan por \textbf{sorteo}, una vez todos los grupos hayan escogido tema.
+  \item El número de exposiciones por sesión se define según la cantidad de grupos inscritos.
+\end{itemize}
+
+\section{Contenido de la exposición}
+La exposición debe incluir:
+\begin{itemize}
+  \item motivación y relevancia del tema;
+  \item fundamentos teóricos básicos del modelo o estrategia abordada;
+  \item ejemplo computacional ilustrativo en Python;
+  \item aplicaciones o casos de uso reales donde el enfoque se utilice.
+\end{itemize}
+Todos los integrantes deben participar de manera equilibrada en la presentación.
+
+\section{Entregables}
+\begin{enumerate}
+  \item Presentación en PDF.
+  \item Repositorio público en GitHub con el ejemplo computacional en Python. El código debe ser autoexplicativo, comentado y reproducible.
+\end{enumerate}
+
+\section{Banco de temas}
+\begin{minipage}[t]{0.8\textwidth}\vspace{0pt}
+\small\renewcommand{\arraystretch}{1.45}
+\rowcolors{2}{white}{rowalt}
+\begin{tabularx}{\linewidth}{|L{2.1cm}|Y|}
+  \hline
+  \headrow \thead{Línea} & \thead{Temas disponibles} \\ \hline
+  Base & Sistemas de recomendación avanzados; aprendizaje por refuerzo; aprendizaje semi-supervisado; aprendizaje federado; MLOps / deployment; restricciones en modelos; Explainable AI \\ \hline
+  Expansión & Graph Neural Networks; Learning to Rank; uplift modeling y causal ML; active learning; continual learning; time-series transformers; tabular deep learning; AutoML y meta-learning \\ \hline
+  Avanzados & Synthetic data; privacy-preserving ML; fairness; anomaly detection at scale; survival analysis; multi-objective optimization; weak supervision; foundation models tabulares o temporales \\ \hline
+  Sistemas & Retrieval-augmented ML systems; ML para grafos dinámicos; bandits contextualizados; conformal prediction; uncertainty quantification; TinyML / energy efficient ML \\ \hline
+\end{tabularx}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.17\textwidth}\vspace{0pt}\centering
+  \href{\signup}{\qrcode[height=2.4cm]{\signup}}\\[4pt]
+  {\footnotesize\itshape\color{softgray}Inscripción de temas}
+\end{minipage}
+
+\clearpage
+\section{Rúbrica de evaluación}
+{\small\renewcommand{\arraystretch}{1.45}
+\rowcolors{2}{white}{rowalt}
+\begin{tabularx}{\textwidth}{|L{3.4cm}|Y|>{\centering\arraybackslash}p{1.5cm}|}
+  \hline
+  \headrow \thead{Criterio} & \thead{Descripción} & \thead{Puntaje} \\ \hline
+  Claridad y organización & La exposición está bien estructurada, sigue un hilo lógico y utiliza recursos visuales claros. & 0 -- 5 \\ \hline
+  Rigor técnico & Explica correctamente los fundamentos del tema y demuestra dominio conceptual. & 0 -- 5 \\ \hline
+  Ejemplo computacional & Presenta un código en Python reproducible, bien documentado y alineado con el tema. & 0 -- 5 \\ \hline
+  Aplicaciones y relevancia & Conecta el tema con aplicaciones reales, casos de uso o implicaciones prácticas. & 0 -- 5 \\ \hline
+  Creatividad e innovación & Incluye ejemplos novedosos, recursos originales o enfoques que enriquecen la comprensión. & 0 -- 5 \\ \hline
+  Trabajo en equipo & Todos los integrantes participan de manera equilibrada y coordinada en la exposición. & 0 -- 5 \\ \hline
+  Comunicación y tiempo & Respeta el tiempo asignado, mantiene la atención del público y responde adecuadamente a preguntas. & 0 -- 5 \\ \hline
+\end{tabularx}}
+
+\end{document}

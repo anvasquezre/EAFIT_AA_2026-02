@@ -7,3 +7,17 @@ lectures/latex/**/*.pdf
 
 # Taller not published yet
 /homeworks/aprendizaje_automatico_taller_20261.pdf
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg

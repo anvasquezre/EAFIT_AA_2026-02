@@ -1,0 +1,173 @@
+% eafitml.sty -- shared Beamer look for SI7009 Aprendizaje Automatico lectures.
+% Universidad EAFIT branding, taken from the eafit.edu.co design tokens
+% (--ssa-color-palette-*, Inter / Roboto Serif): navy title and section pages,
+% EAFIT blue accents, neutral grays, official white/black wordmark.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{eafitml}[2026/09/23 SI7009 lecture style, EAFIT branding]
+
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[spanish,es-noquoting,es-nodecimaldot]{babel}
+\RequirePackage{lmodern}          % math + fallback
+\RequirePackage[sfdefault]{inter} % EAFIT primary typeface
+\RequirePackage{amsmath,amssymb,mathtools,bm}
+\RequirePackage{booktabs,tabularx,multirow,array,makecell}
+\RequirePackage{graphicx}
+\RequirePackage{xcolor}
+\RequirePackage{siunitx}
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,shapes.misc,calc,fit,backgrounds,decorations.pathreplacing}
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\RequirePackage{listings}
+\RequirePackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\sisetup{output-decimal-marker={,}, group-separator={.}}
+
+% ---------------------------------------------------------------- colors
+% EAFIT palette (eafit.edu.co --ssa-color-palette-*)
+\definecolor{eafitnavy}{HTML}{000066}     % azul-oscuro
+\definecolor{eafitblue}{HTML}{26A3DD}     % brand-color
+\definecolor{eafitbluedark}{HTML}{1A89C9} % brand-color-dark
+\definecolor{eafitbluelight}{HTML}{70C3E9}% brand-color-light
+\definecolor{eafitneon}{HTML}{146AEF}     % azul-neon (links / highlights)
+\definecolor{eafitsky}{HTML}{C3E9FC}      % azul-cielo
+\definecolor{eafitgray}{HTML}{333333}     % gris-100 (body text)
+\definecolor{eafitgraymid}{HTML}{656565}  % gris-80
+\definecolor{eafitgraylight}{HTML}{F6F6F6}% gris-claro
+\definecolor{eafitgrayline}{HTML}{DBDBDC} % gray-20
+\definecolor{eafitinfo}{HTML}{184958}     % informacion
+\definecolor{eafiterror}{HTML}{A6040E}    % errortextobg
+\definecolor{eafiterrorbg}{HTML}{FEF0F0}  % errorbg
+
+% Semantic names used by the lecture sources (kept for compatibility).
+\colorlet{mlbg}{eafitnavy}          % dark title/section background
+\colorlet{mlgray}{eafitgray}        % header strip / block titles
+\colorlet{mltext}{eafitgray}
+\colorlet{mltitle}{eafitnavy}       % frame title
+\colorlet{mlgold}{eafitbluedark}    % accent (historical name)
+\colorlet{mlcream}{eafitgraylight}  % block body / table header
+\colorlet{mlteal}{eafitinfo}        % "Definicion"
+\colorlet{mlbrown}{eafitneon}       % "Herramienta"
+\colorlet{mlred}{eafiterror}        % rule / alert
+\colorlet{mlredbg}{eafiterrorbg}
+\definecolor{mltealbg}{HTML}{E4F4FB} % eafitsky, lightened
+\colorlet{mlbrownbg}{eafitsky}
+\colorlet{mlgraybg}{eafitgrayline}
+
+% Official wordmark (from eafit.edu.co), found next to this .sty or one level up.
+\newcommand{\eafitlogo}[2][height=0.9cm]{% [size]{blanco|negro}
+  \IfFileExists{eafit_logo_#2.png}{\includegraphics[#1]{eafit_logo_#2.png}}%
+    {\includegraphics[#1]{../eafit_logo_#2.png}}}
+
+% ---------------------------------------------------------------- beamer theme
+\usetheme{Madrid}
+\usefonttheme{professionalfonts}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize items}[square]
+\setbeamertemplate{enumerate items}[default]
+\setbeamertemplate{blocks}[default]
+
+\setbeamercolor{normal text}{fg=mltext,bg=white}
+\setbeamercolor{structure}{fg=mlgray}
+\setbeamercolor{alerted text}{fg=mlred}
+\setbeamercolor{frametitle}{fg=mltitle,bg=white}
+\setbeamerfont{frametitle}{series=\bfseries,size=\large}
+\setbeamertemplate{frametitle}{\vskip0.25em\usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}\insertframetitle\par\vskip-0.2em{\color{eafitblue}\rule{2.2em}{1.6pt}}\par}
+\setbeamercolor{itemize item}{fg=mlgray}
+\setbeamercolor{itemize subitem}{fg=mlgray}
+\setbeamercolor{enumerate item}{fg=mlgold}
+\setbeamercolor{block title}{fg=white,bg=mlbg}
+\setbeamercolor{block body}{fg=mltext,bg=mlcream}
+\setbeamercolor{block title alerted}{fg=white,bg=mlred}
+\setbeamercolor{block body alerted}{fg=mltext,bg=mlredbg}
+\setbeamercolor{block title example}{fg=white,bg=mlteal}
+\setbeamercolor{block body example}{fg=mltext,bg=mltealbg}
+\setbeamerfont{block title}{series=\bfseries,size=\small}
+
+% footer: author | short title | page/total
+\setbeamercolor{author in head/foot}{fg=white,bg=mlbg}
+\setbeamercolor{title in head/foot}{fg=mlbg,bg=mlgraybg}
+\setbeamercolor{date in head/foot}{fg=white,bg=mlbg}
+\setbeamertemplate{footline}{%
+  \leavevmode\hbox{%
+  \begin{beamercolorbox}[wd=.22\paperwidth,ht=2.25ex,dp=1ex,left,leftskip=.5em]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\tiny\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.58\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \tiny\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.20\paperwidth,ht=2.25ex,dp=1ex,left,leftskip=.5em]{date in head/foot}%
+    \tiny\insertframenumber/\inserttotalframenumber
+  \end{beamercolorbox}}\vskip0pt}
+
+% title page on dark background
+\setbeamercolor{title}{fg=white,bg=mlbg}
+\setbeamercolor{subtitle}{fg=eafitbluelight}
+\setbeamercolor{author}{fg=white}
+\setbeamercolor{institute}{fg=eafitbluelight}
+\setbeamercolor{date}{fg=eafitbluelight}
+\setbeamerfont{title}{series=\bfseries,size=\LARGE}
+\setbeamerfont{author}{series=\bfseries}
+\setbeamerfont{institute}{size=\scriptsize}
+\setbeamerfont{date}{size=\scriptsize}
+\setbeamertemplate{title page}{%
+  \vfill
+  \begin{beamercolorbox}[wd=\textwidth,sep=6pt,center,rounded=false]{title}
+    \usebeamerfont{title}\inserttitle\par
+    \ifx\insertsubtitle\@empty\else\vskip0.3em{\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\normalsize\mdseries\insertsubtitle\par}\fi
+  \end{beamercolorbox}
+  \vskip1em
+  \begin{center}
+    {\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic}\par\vskip0.8em
+    {\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor}\par\vskip0.8em
+    {\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute}\par\vskip1.8em
+    {\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate}
+  \end{center}
+  \vfill
+  \hfill\eafitlogo[height=0.75cm]{blanco}\par\vskip0.6em}
+
+% dark full-slide background for title and section frames
+\newcommand{\darkframe}{\setbeamercolor{background canvas}{bg=mlbg}}
+\newcommand{\titleframe}{%
+  {\darkframe\begin{frame}[plain,noframenumbering]\titlepage\end{frame}}}
+\newcommand{\sectionframe}[1]{%
+  {\darkframe\begin{frame}[plain]
+    \centering\vfill{\color{white}\Large\bfseries #1\par}\vskip0.4em{\color{eafitblue}\rule{3em}{2pt}}\vfill
+    \hfill\eafitlogo[height=0.7cm]{blanco}
+  \end{frame}}}
+
+% frame that shows a full-bleed image (infographic slides)
+\newcommand{\imageframe}[1]{%
+  {\setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{#1}}%
+   \begin{frame}[plain]\end{frame}}}
+
+% ---------------------------------------------------------------- semantic boxes
+% Header label + optional title, colored header, light body.
+\newcommand{\ml@newbox}[4]{% name, header color, body color, label
+  \newtcolorbox{#1}[1][]{enhanced,sharp corners,boxrule=0pt,frame hidden,
+    colback=#3,colbacktitle=#2,coltitle=white,
+    fonttitle=\bfseries\small,left=4pt,right=4pt,top=2pt,bottom=2pt,
+    toptitle=1pt,bottomtitle=1pt,before skip=4pt,after skip=4pt,
+    title={\ifx\relax##1\relax #4\else{\ifx\relax#4\relax\else\scriptsize #4:\ \fi}##1\fi}}}
+\ml@newbox{defbox}{mlteal}{white}{Definición}          % "Definición: ..."
+\ml@newbox{toolbox}{mlbrown}{white}{Herramienta}       % "Herramienta: ..."
+\ml@newbox{taskbox}{mlgray}{white}{Taller / tarea}     % "Taller / tarea: ..."
+\ml@newbox{rulebox}{mlred}{mlredbg}{}                  % red rule / warning
+\ml@newbox{keybox}{mlbg}{white}{Idea clave}            % black "Idea clave: ..."
+\ml@newbox{notebox}{mlgray}{mlcream}{}                 % gray header, cream body
+\ml@newbox{examplebox}{mlteal}{mltealbg}{Ejemplo}
+
+% ---------------------------------------------------------------- code
+\lstdefinestyle{mlpython}{language=Python,basicstyle=\ttfamily\scriptsize,
+  keywordstyle=\color{mlteal}\bfseries,commentstyle=\color{mlgray}\itshape,
+  stringstyle=\color{mlbrown},showstringspaces=false,breaklines=true,
+  backgroundcolor=\color{mlcream},frame=none,xleftmargin=2pt,
+  literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 {ñ}{{\~n}}1 {Á}{{\'A}}1 {É}{{\'E}}1 {Ó}{{\'O}}1 {¿}{{?`}}1 {¡}{{!`}}1}
+\lstset{style=mlpython}
+
+\newcommand{\gold}[1]{{\color{mlgold}#1}}  % accent text (EAFIT blue)
+\newcommand{\hl}[1]{\textbf{#1}}
+
+\endinput
