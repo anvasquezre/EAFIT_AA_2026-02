@@ -17,11 +17,14 @@ Este curso desarrolla criterio técnico para formular, validar, comparar e inter
 
 **Profesor:** [Andrés Vásquez Restrepo](mailto:avasquezr3@eafit.edu.co)
 
+**Horario:** viernes 5:00–9:00 p. m. y sábados 8:00 a. m.–12:00 m. · Poblado, Bloque 35, Aula 201 · 25/09/2026 – 10/10/2026
+
 ---
 
 ## Acceso rápido
 
 - [Ruta del curso, materiales y recursos por sesión](#ruta-del-curso-materiales-y-recursos-por-sesión)
+- [Calendario de sesiones](#calendario-de-sesiones)
 - [Evaluación](#evaluación)
 - [Taller evaluativo](#taller-evaluativo)
 - [Exposiciones](#exposiciones)
@@ -37,6 +40,21 @@ Este curso desarrolla criterio técnico para formular, validar, comparar e inter
 |---|---|---|---|---|
 | 1 | Syllabus, evaluación moderna, validación e hiperparámetros | Evaluación honesta de modelos | [Slides PDF 01a](https://github.com/anvasquezre/EAFIT_AA_2026-02/blob/main/lectures/01a_ml_evaluacion_validacion_arboles.pdf)<br>[Notebook NB01](https://github.com/anvasquezre/EAFIT_AA_2026-02/blob/main/notebooks/01_ml_flujo_basico_fraude.ipynb)<br>[![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/anvasquezre/EAFIT_AA_2026-02/blob/main/notebooks/01_ml_flujo_basico_fraude.ipynb)<br>[![Abrir en Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/anvasquezre/EAFIT_AA_2026-02/blob/main/notebooks/01_ml_flujo_basico_fraude.ipynb) | [Scikit-learn · Model selection](https://scikit-learn.org/stable/model_selection.html)<br>[Scikit-learn · Metrics and scoring](https://scikit-learn.org/stable/modules/model_evaluation.html)<br>[Scikit-learn · Threshold tuning](https://scikit-learn.org/stable/modules/classification_threshold.html)<br>[Scikit-learn · Probability calibration](https://scikit-learn.org/stable/modules/calibration.html) |
 | 2 | Árboles, ensembles, boosting moderno, balanceo y optimización bayesiana | Credit Card Transactions Fraud Detection | [Slides PDF 01b](https://github.com/anvasquezre/EAFIT_AA_2026-02/blob/main/lectures/01b_ml_ensembles_balanceo.pdf)<br>[Notebook NB02](https://github.com/anvasquezre/EAFIT_AA_2026-02/blob/main/notebooks/02_ml_boosting_fraude.ipynb)<br>[![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/anvasquezre/EAFIT_AA_2026-02/blob/main/notebooks/02_ml_boosting_fraude.ipynb)<br>[![Abrir en Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/anvasquezre/EAFIT_AA_2026-02/blob/main/notebooks/02_ml_boosting_fraude.ipynb) | [XGBoost](https://xgboost.readthedocs.io/)<br>[XGBoost · Parameters](https://xgboost.readthedocs.io/en/stable/parameter.html)<br>[LightGBM](https://lightgbm.readthedocs.io/en/stable/)<br>[CatBoost](https://catboost.ai/)<br>[imbalanced-learn](https://imbalanced-learn.org/stable/)<br>[Optuna](https://optuna.org/) |
+
+---
+
+## Calendario de sesiones
+
+| Sesión | Fecha | Horario |
+|---|---|---|
+| 1 | Viernes 25/09/2026 | 5:00–9:00 p. m. |
+| 2 | Sábado 26/09/2026 | 8:00 a. m.–12:00 m. |
+| 3 | Viernes 02/10/2026 | 5:00–9:00 p. m. |
+| 4 | Sábado 03/10/2026 | 8:00 a. m.–12:00 m. |
+| 5 | Viernes 09/10/2026 | 5:00–9:00 p. m. |
+| 6 | Sábado 10/10/2026 | 8:00 a. m.–12:00 m. |
+
+Lugar: Poblado, Bloque 35, Aula 201.
 
 ---
 
@@ -70,7 +88,7 @@ El taller corresponde a una evaluación grupal del curso y se entrega por Intera
 
 ## Exposiciones
 
-Cada grupo (individual o en pareja; tríos solo si la matrícula lo exige) escoge un tema avanzado de Machine Learning del banco oficial, por orden de escogencia en la [hoja de inscripción](https://eafit-my.sharepoint.com/:x:/g/personal/avasquezr3_eafit_edu_co/IQBMNr9rRCRzSIhl0wmT5yroAXJ4WnD7ZvdjMnQujZHcw5Y?e=CsqvSX). Un tema no se repite hasta agotar el banco.
+Cada grupo (individual o en pareja; tríos solo si la matrícula lo exige) escoge un tema avanzado de Machine Learning del banco oficial, por orden de escogencia en la [hoja de inscripción](https://eafit-my.sharepoint.com/:x:/g/personal/avasquezr3_eafit_edu_co/IQBMNr9rRCRzSIhl0wmT5yroAQXA9qAgGdg6btGvp3nM0f4). Un tema no se repite hasta agotar el banco.
 
 La presentación dura **20 minutos + 5 minutos de preguntas**. No se espera una revisión enciclopédica, sino una explicación bien estructurada del problema, la intuición del método, un ejemplo computacional y sus riesgos de uso.
 
@@ -78,8 +96,8 @@ La presentación dura **20 minutos + 5 minutos de preguntas**. No se espera una 
 
 ### Calendario
 
-- **Cierre de escogencia de temas:** final de la Sesión 2.
-- Las exposiciones inician en la **Sesión 3**.
+- **Cierre de escogencia de temas:** final de la Sesión 2 (sábado 26/09/2026).
+- Las exposiciones inician en la **Sesión 3** (viernes 02/10/2026).
 - La **fecha y el orden** de cada grupo se asignan por **sorteo**, una vez todos los grupos hayan escogido tema.
 - El número de exposiciones por sesión se define según la cantidad de grupos.
 
