@@ -20,6 +20,8 @@ dependencies = [
     "catboost",
     "optuna",
     "imbalanced-learn",
+    # 04_ml_recomendadores_shap.ipynb: explanations of the ranking model
+    "shap",
     "kagglehub[pandas-datasets]>=1.0.2",
     "torch>=2.14.0",
     # ml_time_series_walkforward.ipynb
