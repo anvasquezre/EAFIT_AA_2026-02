@@ -1,0 +1,288 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-noquoting,es-nodecimaldot,es-tabla]{babel}
+\usepackage{newtxtext}
+\usepackage[scaled=0.88]{beramono}
+\usepackage[margin=1.1in,top=1.45in,headheight=60pt,headsep=14pt]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{graphicx,array,tabularx,enumitem,fancyhdr,titlesec,qrcode,needspace}
+\usepackage[most]{tcolorbox}
+\usepackage[colorlinks=true,urlcolor=eafitlink,linkcolor=eafitnavy]{hyperref}
+
+% ---------------------------------------------------------------- palette (taller 2026-1)
+\definecolor{eafitnavy}{HTML}{0F1B5E}
+\definecolor{eafitaccent}{HTML}{1FA8DC}
+\definecolor{eafitlink}{HTML}{0563C1}
+\definecolor{eafitred}{HTML}{E5484D}
+\definecolor{boxfill}{HTML}{EAF6FB}
+\definecolor{warnfill}{HTML}{FDF5E2}
+\definecolor{codefill}{HTML}{F2F2F2}
+\definecolor{rowalt}{HTML}{F2F2F2}
+\definecolor{gridgray}{HTML}{BFBFBF}
+\definecolor{bodytext}{HTML}{222222}
+\definecolor{softgray}{HTML}{555555}
+
+\newcommand{\kaggle}{https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce}
+\newcommand{\buildscript}{https://github.com/anvasquezre/EAFIT_AA_2026-02/blob/main/homeworks/taller/build_olist_duckdb.py}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\color{bodytext}
+\setlist{nosep,leftmargin=1.5em,topsep=2pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+% ---------------------------------------------------------------- header
+\pagestyle{fancy}\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[C]{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=north west,inner sep=0pt] at ([xshift=9pt,yshift=-10pt]current page.north west)
+      {\includegraphics[width=87pt]{figures/eafit_logo.png}};
+  \end{tikzpicture}%
+  {\color{black}\bfseries\itshape Aprendizaje Automático\\ Taller, Semestre 2026-2\\ Profesor: Andrés Vásquez Restrepo}\\[-2pt]
+  {\color{black}\rule{\textwidth}{0.6pt}}}
+\fancyfoot[C]{\small\color{softgray}\thepage}
+
+% ---------------------------------------------------------------- sections
+\titleformat{\section}{\needspace{10\baselineskip}\color{eafitnavy}\fontsize{18}{22}\selectfont\bfseries}{\thesection.}{0.4em}{}[{\color{eafitaccent}\titlerule[2pt]}]
+\titlespacing*{\section}{0pt}{16pt}{8pt}
+\titleformat{\subsection}{\needspace{6\baselineskip}\color{eafitnavy}\large\bfseries}{\thesubsection}{0.4em}{}
+\titlespacing*{\subsection}{0pt}{10pt}{2pt}
+
+% ---------------------------------------------------------------- tables
+\arrayrulecolor{gridgray}
+\newcommand{\thead}[1]{\color{white}\bfseries\small #1}
+\newcommand{\headrow}{\rowcolor{eafitnavy}}
+
+% ---------------------------------------------------------------- boxes
+\tcbset{taller/.style={enhanced,sharp corners,colframe=gridgray,boxrule=0.5pt,
+  left=10pt,right=10pt,top=8pt,bottom=8pt,before skip=8pt,after skip=6pt}}
+\newtcolorbox{infobox}{taller,colback=boxfill,borderline north={2pt}{0pt}{eafitaccent}}
+\newtcolorbox{warnbox}{taller,colback=warnfill,borderline north={2pt}{0pt}{eafitaccent}}
+\newtcolorbox{questionbox}{taller,colback=boxfill,borderline north={2pt}{0pt}{eafitaccent},fontupper=\itshape\large}
+\newtcblisting{code}[1]{taller,colback=codefill,listing only,
+  title={#1},coltitle=eafitaccent,fonttitle=\bfseries,colbacktitle=white,
+  attach title to upper={\par\vspace{4pt}},
+  listing options={language=Python,basicstyle=\ttfamily\small,columns=fullflexible,
+    keepspaces=true,upquote=true,showstringspaces=false,
+    keywordstyle=\color{eafitnavy}\bfseries,commentstyle=\color{softgray}\itshape,
+    stringstyle=\color{eafitlink},
+    literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 {ñ}{{\~n}}1}}
+\newcommand{\tabla}[1]{\texttt{#1}}
+
+\begin{document}
+
+% ---------------------------------------------------------------- title block
+{\itshape\color{softgray}Aprendizaje Automático · MCDA 2026-2}\par\vspace{-4pt}
+{\color{eafitnavy}\fontsize{22}{27}\selectfont\bfseries Taller — Olist: entregas, demanda y clientes}\par\vspace{-2pt}
+{\color{eafitaccent}\rule{\textwidth}{2pt}}\par\vspace{-2pt}
+{\itshape\color{softgray}Clasificación desbalanceada · Series de tiempo · Aprendizaje no supervisado · SQL con DuckDB}\par
+
+\begin{infobox}
+  \setlength{\parskip}{5pt}
+  {\color{eafitnavy}\bfseries Tema:} un marketplace real de comercio electrónico visto desde tres problemas de ML\par
+  {\color{eafitnavy}\bfseries Modalidad:} grupal\par
+  {\color{eafitnavy}\bfseries Peso:} 20\,\% de la nota del curso\par
+  {\color{eafitnavy}\bfseries Fecha de entrega:} sábado 17 de octubre de 2026, 11:59 p.\,m., vía Interactiva\par
+  {\color{eafitnavy}\bfseries Datos:} \href{\kaggle}{Brazilian E-Commerce Public Dataset by Olist} (Kaggle), cargado en DuckDB con el \href{\buildscript}{script del curso}\par
+  {\color{eafitnavy}\bfseries Entregables:} informe en PDF + notebooks (.ipynb) + consultas SQL
+\end{infobox}
+
+\section{Contexto del problema}
+Olist es un marketplace brasileño que conecta pequeños vendedores con los grandes canales de venta en línea. El conjunto de datos público contiene cerca de 100\,000 órdenes reales (anonimizadas) entre 2016 y 2018, con información de productos, vendedores, clientes, pagos, envíos y reseñas.
+
+Un mismo negocio genera preguntas de naturaleza muy distinta, y cada una exige una familia diferente de métodos. En este taller usted trabajará como el equipo de datos de Olist y abordará tres de ellas:
+
+\begin{enumerate}
+  \item \textbf{Operaciones:} ¿qué órdenes van a llegar tarde? \hfill {\color{softgray}clasificación desbalanceada}
+  \item \textbf{Planeación:} ¿cuántas órdenes recibiremos en las próximas semanas? \hfill {\color{softgray}series de tiempo}
+  \item \textbf{Mercadeo:} ¿qué tipos de clientes tenemos? \hfill {\color{softgray}aprendizaje no supervisado}
+\end{enumerate}
+
+El taller es \textbf{modular}: un módulo común de datos y cuatro módulos de modelado (A--D) que comparten la misma base de datos.
+
+\section{Datos y entorno de trabajo}
+
+\subsection*{2.1 Regla del entorno: todo pasa por SQL}
+En una empresa los datos rara vez llegan como un CSV limpio: viven en una bodega de datos y se acceden con SQL. Para simular ese entorno, el taller usa \textbf{DuckDB}, una base de datos analítica embebida que se instala con \texttt{pip install duckdb} y no requiere servidor.
+
+\begin{warnbox}
+  {\color{eafitred}\bfseries Obligatorio:} toda la lectura de datos debe hacerse con \textbf{consultas SQL} sobre el archivo \texttt{olist.duckdb}.
+  \begin{itemize}
+    \item No está permitido leer los CSV crudos (\texttt{pd.read\_csv}, \texttt{read\_csv} de DuckDB, Polars, etc.) en los notebooks.
+    \item Los cruces entre tablas, los filtros, las agregaciones y las variables derivadas de agregados (conteos, promedios por vendedor, ventanas temporales) deben resolverse en SQL. Pandas se usa a partir del resultado de la consulta.
+    \item Abra la conexión en modo de solo lectura (\texttt{read\_only=True}): la base cruda no se modifica. Si necesita tablas intermedias, créelas en una base aparte o como vistas en memoria.
+    \item Las consultas que dependan de una fecha de corte deben recibirla como parámetro (\texttt{?}) y no escribirla a mano.
+  \end{itemize}
+\end{warnbox}
+
+\subsection*{2.2 Construcción de la base}
+El repositorio del curso incluye \href{\buildscript}{\texttt{homeworks/taller/build\_olist\_duckdb.py}}, que descarga el dataset desde Kaggle y crea \texttt{olist.duckdb} con una tabla por archivo. Las tablas se cargan \textbf{sin limpiar}: la validación es parte del trabajo.
+
+\begin{code}{Construir la base}
+uv run python homeworks/taller/build_olist_duckdb.py --out data/olist.duckdb
+\end{code}
+
+\begin{code}{Plantilla sugerida de conexión}
+import duckdb
+
+con = duckdb.connect("data/olist.duckdb", read_only=True)
+print(con.sql("SHOW TABLES"))
+
+# Parámetros con ? en lugar de f-strings
+ordenes = con.execute("""
+    SELECT o.order_id, o.order_purchase_timestamp, c.customer_state
+    FROM orders AS o
+    JOIN customers AS c USING (customer_id)
+    WHERE o.order_purchase_timestamp < ?
+""", ["2018-01-01"]).df()
+\end{code}
+
+\subsection*{2.3 Tablas disponibles}
+{\small\renewcommand{\arraystretch}{1.35}
+\rowcolors{2}{white}{rowalt}
+\begin{tabularx}{\textwidth}{|L{3.9cm}|>{\raggedleft\arraybackslash}p{1.5cm}|Y|}
+  \hline
+  \headrow \thead{Tabla} & \thead{Filas} & \thead{Contenido y llaves} \\ \hline
+  \tabla{orders}               & 99\,441   & Una fila por orden: estado y cinco marcas de tiempo (compra, aprobación, entrega al transportador, entrega al cliente, fecha estimada). Llave \tabla{order\_id}. \\ \hline
+  \tabla{order\_items}         & 112\,650  & Una fila por ítem: producto, vendedor, precio, flete y fecha límite de despacho. \\ \hline
+  \tabla{order\_payments}      & 103\,886  & Medio de pago, número de cuotas y valor. Una orden puede tener varios pagos. \\ \hline
+  \tabla{order\_reviews}       & 99\,224   & Calificación de 1 a 5, comentario y fechas de la reseña. \\ \hline
+  \tabla{customers}            & 99\,441   & Cliente por orden (\tabla{customer\_id}), identificador único de persona (\tabla{customer\_unique\_id}), ciudad, estado y prefijo postal. \\ \hline
+  \tabla{sellers}              & 3\,095    & Vendedor, ciudad, estado y prefijo postal. \\ \hline
+  \tabla{products}             & 32\,951   & Categoría (en portugués), dimensiones, peso y número de fotos. \\ \hline
+  \tabla{geolocation}          & 1\,000\,163 & Latitud y longitud por prefijo postal (con múltiples filas por prefijo). \\ \hline
+  \tabla{category\_translation} & 71       & Traducción de las categorías al inglés. \\ \hline
+\end{tabularx}}
+
+\begin{infobox}
+  {\color{eafitnavy}\bfseries Esquema y diccionario:} la \href{\kaggle}{página del dataset en Kaggle} documenta cada columna e incluye el diagrama relacional. Revíselo antes de escribir la primera consulta.
+\end{infobox}
+
+\section{Módulo 0 — Datos, calidad y EDA (común)}
+Este módulo alimenta a los demás. Todo debe resolverse con SQL y documentarse en el informe.
+\begin{itemize}
+  \item \textbf{Granularidad y llaves.} Verifique la unicidad de cada llave y la cardinalidad de cada relación (1:1, 1:N). Identifique qué tablas multiplican filas al unirse y cómo evitarlo.
+  \item \textbf{Calidad.} Valores faltantes, fechas inconsistentes (p.\,ej., entrega antes de la compra), órdenes sin ítems, pagos que no cuadran con precio + flete, prefijos postales sin geolocalización, categorías sin traducción.
+  \item \textbf{Identidad del cliente.} Explique la diferencia entre \tabla{customer\_id} y \tabla{customer\_unique\_id} y sus consecuencias para los módulos A y C.
+  \item \textbf{Cobertura temporal.} Determine el período útil del dataset: hay meses al inicio y al final con muy pocas órdenes. Justifique qué rango usará.
+  \item \textbf{EDA orientado a los módulos:} distribución de tiempos de entrega y del retraso, órdenes por día y por semana, distribución geográfica de clientes y vendedores, comportamiento de compra por cliente.
+\end{itemize}
+
+\section{Módulo A — Clasificación: entregas tardías}
+
+\begin{questionbox}
+  Al momento de aprobar una orden, ¿cuál es la probabilidad de que llegue después de la fecha estimada de entrega?
+\end{questionbox}
+
+\textbf{Población y variable objetivo.} Órdenes con \tabla{order\_status = 'delivered'} y fecha de entrega al cliente no nula. El target vale 1 si \tabla{order\_delivered\_customer\_date > order\_estimated\_delivery\_date} (compare por día calendario) y 0 en otro caso. Reporte la proporción de la clase positiva.
+
+\begin{warnbox}
+  {\color{eafitred}\bfseries Fuga de información:} el modelo se usa en el \textbf{momento de la aprobación}. Ninguna variable puede depender de algo posterior: fecha de entrega al transportador, fecha real de entrega, reseñas, ni estadísticas históricas calculadas con órdenes que todavía no se habían entregado en esa fecha. Documente, para cada variable, por qué está disponible en ese momento.
+\end{warnbox}
+
+\textbf{Partición temporal fija} (por \tabla{order\_purchase\_timestamp}), común a todos los grupos:\par
+{\small\renewcommand{\arraystretch}{1.35}
+\rowcolors{2}{white}{rowalt}
+\begin{tabularx}{\textwidth}{|L{3.0cm}|L{5.0cm}|Y|}
+  \hline
+  \headrow \thead{Conjunto} & \thead{Compras entre} & \thead{Uso} \\ \hline
+  Entrenamiento & 2017-01-01 y 2018-03-31 & Ajuste y validación cruzada temporal \\ \hline
+  Validación    & 2018-04-01 y 2018-05-31 & Selección de modelo, balanceo y umbral \\ \hline
+  Prueba        & 2018-06-01 y 2018-08-15 & Evaluación final, se usa \textbf{una sola vez} \\ \hline
+\end{tabularx}}
+
+La tasa de retraso no es estable en el tiempo: cambia de forma notable entre entrenamiento, validación y prueba. Cuantifique ese cambio, discuta sus posibles causas y su efecto sobre las métricas y el umbral. La prueba termina el 15 de agosto porque las órdenes posteriores aún no se habían entregado cuando se tomó el dataset (censura).
+
+\textbf{Tareas}
+\begin{itemize}
+  \item \textbf{Ingeniería de características (en SQL).} Ideas: distancia cliente--vendedor (a partir de \tabla{geolocation}), plazo prometido (estimada $-$ compra), peso y volumen del paquete, flete relativo al precio, número de ítems y de vendedores, estado de origen y destino, categoría, medio de pago y cuotas, variables de calendario (día de la semana, festivos brasileños, cercanía a Black Friday), e históricos del vendedor y de la ruta (tasa de retraso previa) calculados \emph{solo} con información anterior.
+  \item \textbf{Baseline.} Un modelo ingenuo y una regla de negocio simple. Muestre por qué la \emph{accuracy} no sirve aquí.
+  \item \textbf{Desbalance.} Compare al menos dos estrategias (p.\,ej., \texttt{class\_weight} o \texttt{scale\_pos\_weight}, sub-/sobre-muestreo dentro del pipeline, ajuste de umbral). El remuestreo nunca se aplica a validación ni a prueba.
+  \item \textbf{Modelos.} Al menos tres familias (p.\,ej., regresión logística, Random Forest y un boosting moderno: XGBoost, LightGBM o CatBoost). Optimice hiperparámetros con \texttt{TimeSeriesSplit} u Optuna sobre el conjunto de entrenamiento y reporte media y desviación entre folds.
+  \item \textbf{Métricas y umbral.} PR-AUC y ROC-AUC, curva precisión--recall, matriz de confusión en el umbral final. Proponga una matriz de costos (p.\,ej., costo de no avisar a un cliente que su orden llegará tarde frente al costo de una intervención innecesaria) y elija el umbral que minimice el costo esperado. Evalúe la calibración de las probabilidades.
+\end{itemize}
+
+\section{Módulo B — Series de tiempo: demanda diaria}
+
+\begin{questionbox}
+  ¿Cuántas órdenes recibirá Olist cada día durante las próximas 4 semanas?
+\end{questionbox}
+
+\textbf{Serie.} Número de órdenes por día según \tabla{order\_purchase\_timestamp}, construida con SQL (incluya los días sin órdenes). Como extensión opcional, modele también las 5 categorías con más ventas o la serie del estado de São Paulo.
+
+\textbf{Partición.} Use como prueba las \textbf{últimas 8 semanas} del período útil que haya definido en el Módulo 0 y valide con \emph{walk-forward} (origen móvil, horizonte de 28 días) sobre los datos anteriores.
+
+\textbf{Tareas}
+\begin{itemize}
+  \item \textbf{Análisis de la serie.} Tendencia, estacionalidad semanal, ACF/PACF, estacionariedad (ADF/KPSS) y descomposición. Identifique y trate eventos atípicos (Black Friday 2017, festivos, paros) y justifique si los modela, los marca o los excluye.
+  \item \textbf{Baselines.} Ingenuo (último valor) e ingenuo estacional (mismo día de la semana anterior).
+  \item \textbf{Modelos.} Al menos un modelo estadístico (ETS, SARIMA/SARIMAX) y un modelo de ML con variables de rezago, medias móviles y calendario (p.\,ej., LightGBM). Construya los rezagos sin mirar al futuro y explique su estrategia multi-paso (recursiva o directa).
+  \item \textbf{Métricas.} MAE, RMSE y MAPE o sMAPE por horizonte. Muestre cómo crece el error con el horizonte y compare contra los baselines.
+  \item \textbf{Incertidumbre.} Reporte intervalos de predicción (del modelo estadístico, cuantílicos o conformales) y su cobertura empírica.
+\end{itemize}
+
+\section{Módulo C — No supervisado: segmentación de clientes}
+
+\begin{questionbox}
+  ¿Qué grupos de clientes existen y qué acción comercial tiene sentido para cada uno?
+\end{questionbox}
+
+\textbf{Unidad de análisis.} El cliente real (\tabla{customer\_unique\_id}), con la información disponible hasta la fecha de corte \textbf{2018-06-01}.
+
+\textbf{Tareas}
+\begin{itemize}
+  \item \textbf{Variables por cliente (en SQL).} RFM (recencia, frecuencia, valor monetario) y variables de comportamiento: ticket promedio, cuotas, medio de pago preferido, diversidad de categorías, flete relativo, calificación promedio, experiencia de entrega (retrasos sufridos) y región. Discuta qué ocurre con la frecuencia cuando la gran mayoría de los clientes compra una sola vez y cómo lo maneja.
+  \item \textbf{Preprocesamiento.} Transformaciones para variables sesgadas (log, rangos), escalamiento y codificación. Justifique cada decisión.
+  \item \textbf{Algoritmos.} K-means y al menos otro método de una familia distinta (jerárquico, GMM, DBSCAN/HDBSCAN). Elija el número de grupos con codo, silueta y Davies--Bouldin, y con criterio de negocio.
+  \item \textbf{Visualización.} Proyección en 2D con PCA y UMAP o t-SNE, coloreada por segmento.
+  \item \textbf{Estabilidad.} Compare las particiones entre semillas o submuestras (\emph{Adjusted Rand Index}).
+  \item \textbf{Perfilamiento.} Describa y nombre cada segmento con estadísticas por grupo y proponga una acción comercial concreta para cada uno.
+\end{itemize}
+
+\section{Módulo D — Interpretabilidad e integración}
+\begin{itemize}
+  \item \textbf{SHAP sobre el Módulo A.} Importancia global (\emph{beeswarm}), dependencia de las 3 variables más relevantes y explicación local de una orden correctamente detectada y de un falso negativo. Contraste con la importancia por permutación.
+  \item \textbf{Integración.} Muestre cómo se conectan los módulos con al menos uno de estos análisis: (i) ¿qué segmentos del Módulo C sufren más retrasos?, (ii) ¿cuántas alertas diarias de retraso generaría el modelo A con la demanda proyectada por el Módulo B?, (iii) ¿mejora el modelo A al agregar variables del cliente?
+  \item \textbf{Caso de uso.} Proponga cómo se operaría la solución (p.\,ej., alerta diaria de órdenes en riesgo, plan de capacidad semanal, campañas por segmento) y discuta sus limitaciones: deriva temporal, órdenes no entregadas al cierre del dataset, sesgos de cobertura geográfica.
+\end{itemize}
+
+\section{Entregables}
+
+\subsection{Informe en PDF}
+Máximo 20 páginas sin contar anexos. Debe incluir:
+\begin{enumerate}
+  \item Resumen ejecutivo (una página, con las respuestas a las tres preguntas de negocio).
+  \item Datos, modelo relacional y decisiones de calidad (Módulo 0).
+  \item Un capítulo por módulo: formulación, variables, modelos comparados, validación, métricas y resultados.
+  \item Interpretabilidad, integración y caso de uso.
+  \item Limitaciones, conclusiones y trabajo futuro.
+\end{enumerate}
+
+\subsection{Notebooks y consultas SQL}
+\begin{itemize}
+  \item Un notebook por módulo (\texttt{00\_datos}, \texttt{A\_clasificacion}, \texttt{B\_series}, \texttt{C\_segmentacion}, \texttt{D\_integracion}) o uno solo bien organizado.
+  \item Las consultas SQL principales también en archivos \texttt{.sql} dentro de una carpeta \texttt{sql/}, y leídas desde los notebooks.
+  \item No entregue el archivo \texttt{.duckdb}: el calificador lo reconstruye con el script del curso.
+  \item Código modular y comentado en español. Funciones reutilizables.
+  \item Reproducibilidad: fije \texttt{random\_state}, declare versiones (\texttt{requirements.txt} o \texttt{pyproject.toml}) y use rutas relativas.
+  \item Las celdas deben ejecutarse en orden y sin errores.
+\end{itemize}
+
+\section{Rúbrica de evaluación}
+{\small\renewcommand{\arraystretch}{1.45}
+\rowcolors{2}{white}{rowalt}
+\begin{tabularx}{\textwidth}{|L{4.4cm}|>{\centering\arraybackslash}p{1.2cm}|Y|}
+  \hline
+  \headrow \thead{Criterio} & \thead{Peso} & \thead{Qué se evalúa} \\ \hline
+  Módulo 0: SQL, calidad y EDA & 15\,\% & Uso correcto de DuckDB, cruces sin duplicar filas, problemas de calidad detectados y resueltos, EDA que justifica decisiones \\ \hline
+  Módulo A: clasificación desbalanceada & 25\,\% & Variables sin fuga, estrategias de balanceo, modelos y validación temporal, métricas, umbral por costo y calibración \\ \hline
+  Módulo B: series de tiempo & 20\,\% & Análisis de la serie, baselines, walk-forward, comparación de modelos, intervalos de predicción \\ \hline
+  Módulo C: segmentación & 15\,\% & Variables por cliente, preprocesamiento, selección del número de grupos, estabilidad y perfilamiento accionable \\ \hline
+  Módulo D: interpretabilidad e integración & 15\,\% & SHAP bien leído, conexión entre módulos, caso de uso realista y limitaciones \\ \hline
+  Calidad del informe y del código & 10\,\% & Redacción, organización, reproducibilidad, código limpio y comentado \\ \hline
+\end{tabularx}}
+
+\end{document}

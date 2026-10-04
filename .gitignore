@@ -21,3 +21,10 @@ lectures/latex/**/*.pdf
 *.synctex.gz
 *.bbl
 *.blg
+
+# DuckDB databases (rebuilt from the build script)
+*.duckdb
+*.duckdb.wal
+
+# Material interno del profesor (no publicar)
+/homeworks/_interno/
