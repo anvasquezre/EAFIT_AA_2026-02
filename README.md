@@ -82,9 +82,30 @@ El examen evalúa comprensión conceptual, lectura crítica de resultados, selec
 
 ## Taller evaluativo
 
-El taller corresponde a una evaluación grupal del curso y se entrega por Interactiva.
+El taller es una evaluación grupal y modular (20 %) sobre el dataset real de comercio electrónico **Olist**. Un mismo negocio, tres problemas de ML:
 
-> Enunciado, dataset y fecha de entrega: **por definir**. Se publicarán en esta sección.
+| Módulo | Pregunta | Técnica |
+|---|---|---|
+| 0 | ¿Qué calidad tienen los datos y cómo se relacionan las tablas? | SQL, calidad de datos y EDA |
+| A | ¿Qué órdenes llegarán tarde? | Clasificación desbalanceada, umbral por costo |
+| B | ¿Cuántas órdenes llegarán cada día en las próximas 4 semanas? | Series de tiempo, walk-forward |
+| C | ¿Qué tipos de clientes tenemos? | Segmentación no supervisada |
+| D | ¿Por qué predice lo que predice y cómo se conecta todo? | SHAP e integración |
+
+- **Entrega:** sábado 17/10/2026, 11:59 p. m., vía Interactiva.
+- **Entregables:** informe en PDF + notebooks + consultas SQL.
+- **Entorno:** los datos se consultan **solo con SQL sobre DuckDB**, no con los CSV crudos.
+
+**Descarga:** [Enunciado y rúbrica del taller](https://github.com/anvasquezre/EAFIT_AA_2026-02/blob/main/homeworks/ml_taller_20262.pdf)
+
+```bash
+# Construir la base olist.duckdb (descarga el dataset desde Kaggle)
+uv run python homeworks/taller/build_olist_duckdb.py --out data/olist.duckdb
+
+# Sin uv
+pip install duckdb kagglehub
+python homeworks/taller/build_olist_duckdb.py --out data/olist.duckdb
+```
 
 ---
 
@@ -125,6 +146,7 @@ La presentación dura **20 minutos + 5 minutos de preguntas**. No se espera una 
 | Dataset | Descripción | Uso dentro del curso |
 |---|---|---|
 | [Credit Card Transactions Fraud Detection](https://www.kaggle.com/datasets/kartik2112/fraud-detection) | Transacciones simuladas con variables crudas (monto, categoría, hora, ubicación, edad) y un periodo posterior para inferencia. | Flujo de ML, EDA, outliers, pipelines de inferencia, métricas, threshold y calibración (NB01); boosting, balanceo y Optuna (NB02). |
+| [Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) | ~100k órdenes reales (2016–2018) en 9 tablas relacionales: órdenes, ítems, pagos, reseñas, clientes, vendedores, productos y geolocalización. | Taller evaluativo: SQL con DuckDB, clasificación desbalanceada, series de tiempo y segmentación. |
 
 ---
 
@@ -205,7 +227,10 @@ EAFIT_AA_2026-02/
 │   ├── 04_ml_recommender_shap.pdf
 │   └── latex/        # fuentes LaTeX
 ├── notebooks/        # NB01, NB02, NB03, NB04
-├── homeworks/        # exposiciones (taller por definir)
+├── homeworks/
+│   ├── ml_exposiciones_20262.pdf
+│   ├── ml_taller_20262.pdf
+│   └── taller/       # script para construir olist.duckdb
 ├── aditionalmaterial/
 └── _assets/
 ```
