@@ -1,0 +1,293 @@
+{
+  "random_init_bad_share": 0.085,
+  "init_inertia": {
+    "bad": 1725.7,
+    "kmeans++": 417.1
+  },
+  "k_table": [
+    {
+      "k": 2,
+      "inertia": 11244.0,
+      "silhouette": 0.185,
+      "davies_bouldin": 1.875,
+      "calinski_harabasz": 414.0,
+      "ari_mean": 0.968,
+      "ari_all": [
+        0.938,
+        0.955,
+        0.983,
+        0.969,
+        0.98,
+        0.974,
+        0.977,
+        0.977,
+        0.949,
+        0.974
+      ],
+      "min_size_pct": 0.467
+    },
+    {
+      "k": 3,
+      "inertia": 9533.0,
+      "silhouette": 0.202,
+      "davies_bouldin": 1.586,
+      "calinski_harabasz": 400.0,
+      "ari_mean": 0.871,
+      "ari_all": [
+        0.977,
+        0.885,
+        0.874,
+        0.799,
+        0.946,
+        0.911,
+        0.969,
+        0.767,
+        0.615,
+        0.968
+      ],
+      "min_size_pct": 0.183
+    },
+    {
+      "k": 4,
+      "inertia": 8319.0,
+      "silhouette": 0.177,
+      "davies_bouldin": 1.526,
+      "calinski_harabasz": 390.0,
+      "ari_mean": 0.879,
+      "ari_all": [
+        0.947,
+        0.96,
+        0.887,
+        0.969,
+        0.657,
+        0.824,
+        0.833,
+        0.897,
+        0.859,
+        0.959
+      ],
+      "min_size_pct": 0.122
+    },
+    {
+      "k": 5,
+      "inertia": 7639.0,
+      "silhouette": 0.174,
+      "davies_bouldin": 1.563,
+      "calinski_harabasz": 357.0,
+      "ari_mean": 0.852,
+      "ari_all": [
+        0.817,
+        0.728,
+        0.83,
+        0.888,
+        0.811,
+        0.881,
+        0.79,
+        0.972,
+        0.938,
+        0.866
+      ],
+      "min_size_pct": 0.108
+    },
+    {
+      "k": 6,
+      "inertia": 7138.0,
+      "silhouette": 0.157,
+      "davies_bouldin": 1.562,
+      "calinski_harabasz": 330.0,
+      "ari_mean": 0.887,
+      "ari_all": [
+        0.901,
+        0.901,
+        0.86,
+        0.899,
+        0.945,
+        0.771,
+        0.863,
+        0.907,
+        0.906,
+        0.913
+      ],
+      "min_size_pct": 0.098
+    },
+    {
+      "k": 7,
+      "inertia": 6720.0,
+      "silhouette": 0.164,
+      "davies_bouldin": 1.579,
+      "calinski_harabasz": 309.0,
+      "ari_mean": 0.884,
+      "ari_all": [
+        0.69,
+        0.928,
+        0.885,
+        0.846,
+        0.928,
+        0.928,
+        0.891,
+        0.964,
+        0.908,
+        0.876
+      ],
+      "min_size_pct": 0.082
+    },
+    {
+      "k": 8,
+      "inertia": 6396.0,
+      "silhouette": 0.169,
+      "davies_bouldin": 1.548,
+      "calinski_harabasz": 291.0,
+      "ari_mean": 0.795,
+      "ari_all": [
+        0.82,
+        0.725,
+        0.864,
+        0.845,
+        0.856,
+        0.796,
+        0.756,
+        0.849,
+        0.69,
+        0.745
+      ],
+      "min_size_pct": 0.047
+    }
+  ],
+  "minibatch": {
+    "n": [
+      30000,
+      100000,
+      300000,
+      1000000
+    ],
+    "t_kmeans": [
+      0.03,
+      0.08,
+      0.34,
+      1.18
+    ],
+    "t_minibatch": [
+      0.07,
+      0.14,
+      0.52,
+      3.3
+    ],
+    "extra_inertia_pct": [
+      -0.21,
+      1.4,
+      3.09,
+      0.8
+    ]
+  },
+  "kdist_q95": 2.238,
+  "k_selected": 3,
+  "moons_silhouette": {
+    "kmeans": 0.495,
+    "dbscan": 0.388,
+    "dbscan_noise_pct": 0.0
+  },
+  "profiles_median": {
+    "0": {
+      "revenue": 5903.6,
+      "n_orders": 43.0,
+      "ticket": 136.671,
+      "freight_ratio": 0.165,
+      "n_categories": 3.0,
+      "late_rate": 0.067,
+      "handling_days": 1.688,
+      "review_mean": 4.17
+    },
+    "1": {
+      "revenue": 1277.245,
+      "n_orders": 6.0,
+      "ticket": 156.747,
+      "freight_ratio": 0.163,
+      "n_categories": 1.0,
+      "late_rate": 0.25,
+      "handling_days": 3.635,
+      "review_mean": 3.645
+    },
+    "2": {
+      "revenue": 604.9,
+      "n_orders": 7.0,
+      "ticket": 73.99,
+      "freight_ratio": 0.269,
+      "n_categories": 1.0,
+      "late_rate": 0.0,
+      "handling_days": 1.458,
+      "review_mean": 4.385
+    }
+  },
+  "global_median": {
+    "revenue": 1773.265,
+    "n_orders": 13.0,
+    "ticket": 111.714,
+    "freight_ratio": 0.195,
+    "n_categories": 2.0,
+    "late_rate": 0.06,
+    "handling_days": 1.76,
+    "review_mean": 4.174
+  },
+  "cluster_sizes": [
+    735,
+    318,
+    687
+  ],
+  "lof_local_point": 3.51,
+  "if_rank_local_point": 30,
+  "olist_outliers": {
+    "if": 18,
+    "lof": 18,
+    "both": 7,
+    "if_median": {
+      "revenue": 1292.44,
+      "n_orders": 6.0,
+      "ticket": 131.967,
+      "freight_ratio": 0.503,
+      "n_categories": 1.0,
+      "late_rate": 0.528,
+      "handling_days": 9.083,
+      "review_mean": 2.667
+    }
+  },
+  "drift": {
+    "days": {
+      "psi": 0.336,
+      "ks": 0.229,
+      "ref": "may–oct 2017",
+      "cur": "feb–mar 2018",
+      "ref_median": 10.17,
+      "cur_median": 14.0
+    },
+    "promised": {
+      "psi": 0.96,
+      "ks": 0.376,
+      "ref": "may–oct 2017",
+      "cur": "jul–ago 2018",
+      "ref_median": 22.67,
+      "cur_median": 16.42
+    }
+  },
+  "late_by_month": {
+    "2017-01-01": 0.031,
+    "2017-02-01": 0.032,
+    "2017-03-01": 0.056,
+    "2017-04-01": 0.079,
+    "2017-05-01": 0.036,
+    "2017-06-01": 0.039,
+    "2017-07-01": 0.034,
+    "2017-08-01": 0.033,
+    "2017-09-01": 0.052,
+    "2017-10-01": 0.053,
+    "2017-11-01": 0.143,
+    "2017-12-01": 0.084,
+    "2018-01-01": 0.066,
+    "2018-02-01": 0.16,
+    "2018-03-01": 0.214,
+    "2018-04-01": 0.053,
+    "2018-05-01": 0.082,
+    "2018-06-01": 0.014,
+    "2018-07-01": 0.045,
+    "2018-08-01": 0.104
+  }
+}

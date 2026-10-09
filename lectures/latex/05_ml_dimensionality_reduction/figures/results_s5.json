@@ -1,0 +1,146 @@
+{
+  "n_sellers": 1740,
+  "three_sellers": [
+    {
+      "seller_id": "6b803197e03abd5056b4313306b4f29d",
+      "revenue": 293.0,
+      "n_orders": 6,
+      "ticket": 48.833,
+      "freight_ratio": 0.336,
+      "n_categories": 2,
+      "late_rate": 0.0,
+      "handling_days": 1.104,
+      "review_mean": 4.667
+    },
+    {
+      "seller_id": "de0c78824586e9a5f5f04fd84e25df39",
+      "revenue": 1773.5,
+      "n_orders": 9,
+      "ticket": 197.056,
+      "freight_ratio": 0.082,
+      "n_categories": 1,
+      "late_rate": 0.0,
+      "handling_days": 0.75,
+      "review_mean": 4.889
+    },
+    {
+      "seller_id": "7e93a43ef30c4f03f38b393420bc753a",
+      "revenue": 165563.49,
+      "n_orders": 317,
+      "ticket": 522.282,
+      "freight_ratio": 0.036,
+      "n_categories": 7,
+      "late_rate": 0.054,
+      "handling_days": 1.25,
+      "review_mean": 4.373
+    }
+  ],
+  "distance_ratio": {
+    "1": 2102.433,
+    "2": 130.407,
+    "5": 5.629,
+    "10": 1.868,
+    "20": 1.146,
+    "50": 0.602,
+    "100": 0.315,
+    "200": 0.28,
+    "500": 0.176,
+    "1000": 0.114
+  },
+  "evr": [
+    0.3035,
+    0.2329,
+    0.195,
+    0.0901,
+    0.0779,
+    0.0676,
+    0.0329,
+    0.0001
+  ],
+  "evr_cum": [
+    0.3035,
+    0.5364,
+    0.7314,
+    0.8215,
+    0.8994,
+    0.967,
+    0.9999,
+    1.0
+  ],
+  "loadings": {
+    "revenue": [
+      0.611,
+      -0.09,
+      0.078
+    ],
+    "n_orders": [
+      0.432,
+      -0.344,
+      0.368
+    ],
+    "ticket": [
+      0.406,
+      0.355,
+      -0.408
+    ],
+    "freight_ratio": [
+      -0.421,
+      -0.243,
+      0.435
+    ],
+    "n_categories": [
+      0.307,
+      -0.292,
+      0.334
+    ],
+    "late_rate": [
+      0.027,
+      0.49,
+      0.347
+    ],
+    "handling_days": [
+      0.018,
+      0.417,
+      0.319
+    ],
+    "review_mean": [
+      -0.06,
+      -0.436,
+      -0.411
+    ]
+  },
+  "recon_mse": [
+    0.6965,
+    0.4636,
+    0.2686,
+    0.1785,
+    0.1006,
+    0.033,
+    0.0001,
+    0.0
+  ],
+  "embed_metrics": {
+    "PCA": {
+      "trustworthiness": 0.836,
+      "knn_preservation": 0.109,
+      "seconds": 0.0
+    },
+    "t-SNE": {
+      "trustworthiness": 0.983,
+      "knn_preservation": 0.446,
+      "seconds": 1.74
+    },
+    "UMAP": {
+      "trustworthiness": 0.959,
+      "knn_preservation": 0.347,
+      "seconds": 2.0
+    }
+  },
+  "seed_knn_overlap": 0.615,
+  "task_eval": {
+    "original 8D": 0.908,
+    "PCA 2D": 0.664,
+    "t-SNE 2D": 0.844,
+    "UMAP 2D": 0.822
+  }
+}
