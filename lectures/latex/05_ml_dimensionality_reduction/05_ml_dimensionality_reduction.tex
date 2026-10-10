@@ -231,30 +231,93 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{PCA a mano: el mini-mundo}
-  \begin{columns}[c]
+\begin{frame}{PCA a mano (1/2): centrar y medir la covarianza}
+  \setlength{\abovedisplayskip}{2pt}\setlength{\belowdisplayskip}{2pt}
+  \setlength{\abovedisplayshortskip}{1pt}\setlength{\belowdisplayshortskip}{2pt}
+  \begin{columns}[T]
     \begin{column}{0.4\textwidth}
       \centering
-      \begin{tikzpicture}[scale=0.48]
+      \begin{tikzpicture}[scale=0.47]
         \draw[step=1,mlgray!25,very thin] (0,0) grid (9,8);
-        \draw[-{Stealth},mlgray] (0,0) -- (9.3,0); \draw[-{Stealth},mlgray] (0,0) -- (0,8.3);
-        \draw[eafitblue,very thick,dashed] (4.33-5*0.79,4-5*0.61) -- (4.33+5*0.79,4+5*0.61) node[right,font=\scriptsize]{PC1};
-        \foreach \n/\x/\y in {A/1/2,B/2/1,C/2/3,D/6/5,E/7/7,F/8/6}{
-          \fill[mlteal] (\x,\y) circle (4pt); \node[font=\scriptsize,above left] at (\x,\y) {\n};}
-        \fill[mlred] (4.33,4) circle (3pt) node[below right,font=\scriptsize]{$\bar x$};
+        \draw[-{Stealth},mlgray] (0,0) -- (9.3,0) node[below,font=\tiny]{$x_1$};
+        \draw[-{Stealth},mlgray] (0,0) -- (0,8.3) node[left,font=\tiny]{$x_2$};
+        \foreach \x in {0,2,4,6,8}{\node[font=\tiny,mlgray,below] at (\x,0) {\x};}
+        \foreach \y in {2,4,6,8}{\node[font=\tiny,mlgray,left] at (0,\y) {\y};}
+        \foreach \n/\x/\y/\pos in {A/1/2/above,B/2/1/right,C/2/3/above,D/6/5/below right,E/7/7/above,F/8/6/below}{
+          \fill[mlteal] (\x,\y) circle (4.5pt); \node[font=\tiny,\pos] at (\x,\y) {\textbf{\n}(\x,\,\y)};}
+        \fill[mlred] (4.33,4) circle (4pt) node[below,font=\tiny,text=mlred]{$\bar x$};
       \end{tikzpicture}
+      \vspace{4pt}
+      {\scriptsize\raggedright Covarianza $> 0$: si $x_1$ sube, $x_2$ también. La nube está \textbf{inclinada en diagonal}, y PCA va a buscar esa diagonal.\par}
     \end{column}
     \begin{column}{0.58\textwidth}
-      \small
-      \begin{enumerate}
-        \item media: $\bar x = (4{,}33;\ 4{,}00)$
-        \item covarianza: $\Sigma = \begin{pmatrix} 9{,}07 & 6{,}60 \\ 6{,}60 & 5{,}60\end{pmatrix}$
-        \item eigenvalores: $\lambda_1 = 14{,}16$, $\lambda_2 = 0{,}51$
-        \item PC1: $\mathbf{w}_1 \approx (0{,}79;\ 0{,}61)$
-        \item PC1 explica $\frac{14{,}16}{14{,}67} = $ \textbf{96,5\,\%}
-      \end{enumerate}
-      \footnotesize
-      \begin{tabular}{@{}l c c c c c c@{}}
+      \scriptsize
+      \textbf{Paso 1 · Media}: el centro de la nube (punto rojo)
+      \[ \bar x_1 = \tfrac{1+2+2+6+7+8}{6} = 4{,}33 \qquad \bar x_2 = \tfrac{2+1+3+5+7+6}{6} = 4 \]
+      \textbf{Paso 2 · Centrar}: a cada punto se le resta la media\\[2pt]
+      \setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.05}
+      \begin{tabular}{@{}l r r r r r r@{}}
+        \toprule
+        \hrow & A & B & C & D & E & F \\
+        \midrule
+        $x_1 - \bar x_1$ & $-3{,}33$ & $-2{,}33$ & $-2{,}33$ & $1{,}67$ & $2{,}67$ & $3{,}67$ \\
+        $x_2 - \bar x_2$ & $-2$ & $-3$ & $-1$ & $1$ & $3$ & $2$ \\
+        \bottomrule
+      \end{tabular}
+      \vspace{4pt}
+
+      \textbf{Paso 3 · Covarianza}: con la tabla, sumar cuadrados o productos y dividir por $n-1=5$
+      \[ \begin{aligned}
+        \operatorname{Var}(x_1) &= \tfrac{(-3{,}33)^2 + (-2{,}33)^2 + \cdots + 3{,}67^2}{5} = \tfrac{45{,}33}{5} = 9{,}07\\
+        \operatorname{Var}(x_2) &= \tfrac{(-2)^2 + (-3)^2 + \cdots + 2^2}{5} = \tfrac{28}{5} = 5{,}60\\
+        \operatorname{Cov}(x_1,x_2) &= \tfrac{(-3{,}33)(-2) + (-2{,}33)(-3) + \cdots + (3{,}67)(2)}{5} = \tfrac{33}{5} = 6{,}60
+      \end{aligned} \]
+      $\Sigma = \begin{pmatrix} 9{,}07 & 6{,}60 \\ 6{,}60 & 5{,}60 \end{pmatrix}$
+      \quad varianza total $= 9{,}07 + 5{,}60 = 14{,}67$
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{PCA a mano (2/2): la dirección principal y la proyección}
+  \setlength{\abovedisplayskip}{2pt}\setlength{\belowdisplayskip}{2pt}
+  \setlength{\abovedisplayshortskip}{1pt}\setlength{\belowdisplayshortskip}{2pt}
+  \begin{columns}[T]
+    \begin{column}{0.4\textwidth}
+      \centering
+      \begin{tikzpicture}[scale=0.47]
+        \draw[step=1,mlgray!25,very thin] (0,0) grid (9,8);
+        \draw[-{Stealth},mlgray] (0,0) -- (9.3,0); \draw[-{Stealth},mlgray] (0,0) -- (0,8.3);
+        \draw[eafitblue,very thick,dashed] ({4.333-5.3*0.7918},{4-5.3*0.6107}) -- ({4.333+5.3*0.7918},{4+5.3*0.6107}) node[above,font=\tiny]{PC1};
+        \foreach \n/\x/\y/\z/\pos in {A/1/2/-3.861/above,B/2/1/-3.680/right,C/2/3/-2.458/above,D/6/5/1.931/below right,E/7/7/3.944/above,F/8/6/4.124/below}{
+          \draw[mlred,thin] (\x,\y) -- ({4.333+\z*0.7918},{4+\z*0.6107});
+          \fill[mlred] ({4.333+\z*0.7918},{4+\z*0.6107}) circle (2pt);
+          \fill[mlteal] (\x,\y) circle (4.5pt); \node[font=\tiny,\pos] at (\x,\y) {\textbf{\n}(\x,\,\y)};}
+        \fill[black] (4.33,4) circle (3pt);
+      \end{tikzpicture}\\
+      {\tiny rojo = proyección sobre PC1}\\[4pt]
+      {\scriptsize\raggedright Un número por punto conserva el \textbf{96,5\,\%}. El salto entre C ($-2{,}46$) y D ($1{,}93$) separa \{A, B, C\} de \{D, E, F\}.\par}
+    \end{column}
+    \begin{column}{0.58\textwidth}
+      \scriptsize
+      \textbf{Paso 4 · Eigenvalores}: varianza en cada dirección principal, de $\det(\Sigma - \lambda I) = 0$
+      \[ \begin{aligned}
+        &\lambda^2 - (9{,}07+5{,}60)\,\lambda + (9{,}07\cdot5{,}60 - 6{,}60^2) = \lambda^2 - 14{,}67\,\lambda + 7{,}21 = 0\\
+        &\lambda = \tfrac{14{,}67 \pm \sqrt{14{,}67^2 - 4 \cdot 7{,}21}}{2} = \tfrac{14{,}67 \pm 13{,}65}{2}
+         \;\Rightarrow\; \lambda_1 = 14{,}16,\quad \lambda_2 = 0{,}51
+      \end{aligned} \]
+      \textbf{Paso 5 · PC1}: la dirección $\mathbf w$ con $(\Sigma - \lambda_1 I)\,\mathbf w = 0$
+      \[ \begin{aligned}
+        &(9{,}07 - 14{,}16)\,w_1 + 6{,}60\,w_2 = 0 \;\Rightarrow\; w_2 = 0{,}77\,w_1\\
+        &\text{largo 1:}\ \ \mathbf w_1 = (1;\ 0{,}77) / \sqrt{1+0{,}77^2} \approx (0{,}79;\ 0{,}61)
+      \end{aligned} \]
+      \textbf{Paso 6 · Cuánto explica PC1}: $\ \lambda_1 / (\lambda_1+\lambda_2) = 14{,}16 / 14{,}67 =$ \textbf{96,5\,\%}\par
+      \vspace{3pt}
+
+      \textbf{Paso 7 · Proyectar}: $z_1 = \mathbf w_1 \cdot (x - \bar x)$ = posición sobre la línea punteada
+      \[ z_1(A) = 0{,}79\,(-3{,}33) + 0{,}61\,(-2) = -2{,}63 - 1{,}22 = -3{,}86 \]
+      \setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.05}
+      \centering
+      \begin{tabular}{@{}l r r r r r r@{}}
         \toprule
         \hrow & A & B & C & D & E & F \\
         \midrule
@@ -263,8 +326,6 @@
       \end{tabular}
     \end{column}
   \end{columns}
-  \vspace{2pt}
-  \small Un solo número por punto conserva casi todo: separa {A, B, C} de {D, E, F}. (Mañana volvemos a estos 6 puntos.)
 \end{frame}
 
 \begin{frame}{PCA vía SVD}
