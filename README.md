@@ -93,6 +93,8 @@ La presentación dura **20 minutos + 5 minutos de preguntas**. No se espera una 
 
 **Descarga:** [Enunciado y rúbrica de la exposición](https://github.com/anvasquezre/EAFIT_AA_2026-02/blob/main/homeworks/ml_exposiciones_20262.pdf)
 
+**Material de los grupos:** [presentaciones y ejemplos computacionales entregados](https://github.com/anvasquezre/EAFIT_AA_2026-02/tree/main/homeworks/exposiciones)
+
 ### Calendario
 
 - **Cierre de escogencia de temas:** final de la Sesión 2.
@@ -201,7 +203,7 @@ EAFIT_AA_2026-02/
 │   ├── 01b_ml_ensembles_balanceo.pdf
 │   └── latex/        # fuentes LaTeX
 ├── notebooks/        # NB01, NB02
-├── homeworks/        # exposiciones y taller (taller/: script de la base DuckDB)
+├── homeworks/        # exposiciones y taller (exposiciones/: material de los grupos; taller/: script de la base DuckDB)
 ├── aditionalmaterial/
 └── _assets/
 ```
