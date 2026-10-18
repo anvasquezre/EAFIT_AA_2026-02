@@ -119,6 +119,8 @@ La presentación dura **20 minutos + 5 minutos de preguntas**. No se espera una 
 
 **Descarga:** [Enunciado y rúbrica de la exposición](https://github.com/anvasquezre/EAFIT_AA_2026-02/blob/main/homeworks/ml_exposiciones_20262.pdf)
 
+**Material de los grupos:** [presentaciones y ejemplos computacionales entregados](https://github.com/anvasquezre/EAFIT_AA_2026-02/tree/main/homeworks/exposiciones)
+
 ### Calendario
 
 - **Cierre de escogencia de temas:** final de la Sesión 2 (sábado 26/09/2026).
